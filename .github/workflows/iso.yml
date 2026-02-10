@@ -11,15 +11,22 @@ jobs:
       packages: write
       id-token: write
     steps:
+      - uses: actions/checkout@v4
+
+      # --- NEW STEP STARTS HERE ---
+      - name: Login to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      # --- NEW STEP ENDS HERE ---
+
       - name: Build ISOs
         uses: jasonn3/build-container-installer@v1.2.4
         with:
-          # This must match your recipe name
           image_name: slateos
-          # This points to where your "Green Build" just saved the image
           image_repo: ghcr.io/slate-os
-          # We used 'latest' in the recipe, so we use it here
           image_tag: latest
-          # The base variant we built on top of
           variant: silverblue
           version: 41
