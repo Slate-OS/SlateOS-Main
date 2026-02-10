@@ -24,4 +24,4 @@ modules:
     install:
       - Dash to Dock
       - Just Perfection
-      - Gesture Improvements
+#      - Gesture Improvements
