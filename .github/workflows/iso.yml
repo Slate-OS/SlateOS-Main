@@ -1,0 +1,25 @@
+name: Build ISO
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - name: Build ISOs
+        uses: jasonn3/build-container-installer@v1.2.4
+        with:
+          # This must match your recipe name
+          image_name: slateos
+          # This points to where your "Green Build" just saved the image
+          image_repo: ghcr.io/${{ github.repository_owner }}/slateos
+          # We used 'latest' in the recipe, so we use it here
+          image_tag: latest
+          # The base variant we built on top of
+          variant: silverblue
+          version: 41
