@@ -13,11 +13,10 @@ modules:
       - gnome-tweaks
       - distrobox
 
-  # THIS SECTION WAS THE PROBLEM. HERE IS THE FIX:
   - type: default-flatpaks
-    notify: true
     configurations:
-      - install:
+      - notify: true
+        install:
           - org.gnome.TextEditor
           - com.github.tchx84.Flatseal
 
