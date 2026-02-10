@@ -12,13 +12,14 @@ modules:
     install:
       - gnome-tweaks
       - distrobox
-      # Removed 'waydroid' because it requires a custom repo setup first
 
+  # THIS SECTION WAS THE PROBLEM. HERE IS THE FIX:
   - type: default-flatpaks
     notify: true
-    install:
-      - org.gnome.TextEditor
-      - com.github.tchx84.Flatseal
+    configurations:
+      - install:
+          - org.gnome.TextEditor
+          - com.github.tchx84.Flatseal
 
   - type: gnome-extensions
     install:
