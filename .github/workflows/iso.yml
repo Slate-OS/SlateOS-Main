@@ -17,7 +17,7 @@ jobs:
           # This must match your recipe name
           image_name: slateos
           # This points to where your "Green Build" just saved the image
-          image_repo: ghcr.io/${{ github.repository_owner }}/slateos
+          image_repo: ghcr.io/slate-os/slateos
           # We used 'latest' in the recipe, so we use it here
           image_tag: latest
           # The base variant we built on top of
