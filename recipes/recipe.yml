@@ -1,25 +1,27 @@
-# recipes/recipe.yml
 name: slateos
 description: A bespoke, touch-first Linux distro for power users.
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 41 # Latest stable Fedora
+image-version: 41
+
+platforms:
+  - linux/amd64
+  - linux/arm64
 
 modules:
   - type: rpm-ostree
     install:
-      - gnome-extensions-app
       - gnome-tweaks
-      - waydroid # For Android app support
-      - distrobox # The "Hidden Power" CLI tool
+      - distrobox
+      # Removed 'waydroid' because it requires a custom repo setup first
 
   - type: default-flatpaks
     notify: true
     install:
       - org.gnome.TextEditor
-      - com.github.tchx84.Flatseal # To manage app permissions
+      - com.github.tchx84.Flatseal
 
   - type: gnome-extensions
     install:
-      - dash-to-dock@micxgx.gmail.com # iPad-style dock
-      - just-perfection-desktop@just-perfection # Clean up UI
-      - gesture-improvements@gestures # Enhanced touch swipes
+      - Dash to Dock
+      - Just Perfection
+      - Gesture Improvements
