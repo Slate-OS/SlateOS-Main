@@ -25,7 +25,7 @@ jobs:
           image_repo: ghcr.io/slate-os
           image_tag: latest
           variant: silverblue
-          version: latest
+          version: 43
           iso_name: slateos-latest.iso # Naming it explicitly helps us find it
       - name: Upload ISO
         uses: actions/upload-artifact@v4
