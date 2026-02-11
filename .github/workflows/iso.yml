@@ -18,16 +18,21 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: List files (Debug)
-        run: |
-          echo "Listing all files in workspace:"
-          find . -maxdepth 3 -not -path '*/.*'
+      - name: Build ISOs
+        uses: jasonn3/build-container-installer@v1.2.4
+        with:
+          image_name: slateos
+          image_repo: ghcr.io/slate-os
+          image_tag: latest
+          variant: silverblue
+          version: 41
+          iso_name: slateos-latest.iso # Naming it explicitly helps us find it
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
-          name: slateos-latest
+          name: slateos-latest-iso
           path: |
-            build/deploy.iso
-            build/deploy.iso-CHECKSUM
+            build/*.iso
+            build/*.sha256
           if-no-files-found: warn
           compression-level: 0
