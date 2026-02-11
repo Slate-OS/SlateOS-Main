@@ -24,4 +24,10 @@ modules:
     install:
       - Dash to Dock
       - Just Perfection
-#      - Gesture Improvements
+      - tiling-assistant
+      - blur-my-shell
+  #      - Gesture Improvements
+  - type: files
+    files:
+      - source: system
+        destination: /

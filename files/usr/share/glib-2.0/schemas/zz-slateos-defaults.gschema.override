@@ -1,0 +1,54 @@
+# --- The Look ---
+[org.gnome.desktop.background]
+picture-uri='file:///usr/share/backgrounds/SlateOSWallpaper.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/SlateOSWallpaper.jpg'
+
+# --- The Feel (Touch Optimization) ---
+[org.gnome.desktop.peripherals.touchpad]
+tap-to-click=true
+natural-scroll=true
+
+[org.gnome.desktop.interface]
+# Show battery % (Essential for laptops)
+show-battery-percentage=true
+
+# --- TABLET EXPERIENCE ---
+
+# 1. GESTURES & NAVIGATION
+# Enable hot corners for easy "Overview" access via touch
+[org.gnome.desktop.interface]
+enable-hot-corners=true
+
+# 2. MULTITASKING (Tiling Assistant)
+# Enable the "Android/Windows 11" style snap assist
+[org.gnome.shell.extensions.tiling-assistant]
+enable-tiling-popup=true
+# Drag windows to screen edges to snap
+enable-edge-tiling=true
+
+# 3. APP SWITCHER (Dash to Dock)
+# Make the dock behave like iPad (Intelligent autohide)
+[org.gnome.shell.extensions.dash-to-dock]
+dock-fixed=false
+autohide=true
+# Show dock on mouse hover or gesture
+autohide-in-fullscreen=true
+dash-max-icon-size=48
+# Center the dock
+multi-monitor=true
+
+# 4. SUSPEND EFFICIENCY
+# Force "Suspend" (S3/Modern Standby) instead of "Power Off" when pressing the button
+[org.gnome.settings-daemon.plugins.power]
+power-button-action='suspend'
+# Suspend after 15 mins on battery to save RAM/Power
+sleep-inactive-battery-type='suspend'
+sleep-inactive-battery-timeout=900
+
+# 5. FULL SCREEN IMMERSION
+# Automatically maximize new windows (Approximates iPad behavior)
+# Note: This is a native GNOME tweak to reduce window management
+[org.gnome.mutter]
+auto-maximize=true
+# Enable edge tiling natively as fallback
+edge-tiling=true
