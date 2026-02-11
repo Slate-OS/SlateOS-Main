@@ -1,7 +1,7 @@
 name: slateos
 description: A bespoke, touch-first Linux distro for power users.
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: latest
+image-version: 42
 
 platforms:
   - linux/amd64
