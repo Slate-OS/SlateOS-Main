@@ -31,7 +31,7 @@ jobs:
           iso_name: slateos-latest.iso
 
       - name: Upload ISO
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: slateos-latest-iso
           path: |
