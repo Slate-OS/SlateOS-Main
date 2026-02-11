@@ -2,7 +2,6 @@ name: Build ISO
 
 on:
   workflow_dispatch:
-
 jobs:
   build-iso:
     runs-on: ubuntu-latest
@@ -26,13 +25,17 @@ jobs:
           image_tag: latest
           variant: silverblue
           version: 43
-          iso_name: slateos-latest.iso # Naming it explicitly helps us find it
+          iso_name: slateos-latest.iso
+      - name: Debug - List All Files
+        run: |
+          echo "Listing all files in workspace:"
+          find . -maxdepth 4 -not -path '*/.*'
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
           name: slateos-latest-iso
           path: |
-            build/*.iso
-            build/*.sha256
+            **/*.iso        # <--- UPDATED: Searches EVERY folder
+            **/*.sha256
           if-no-files-found: warn
           compression-level: 0
