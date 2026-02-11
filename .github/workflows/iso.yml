@@ -25,9 +25,9 @@ jobs:
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
-          name: slateos-latest-iso
+          name: slateos-latest
           path: |
-            **/*.iso              # <--- THE FIX: This searches ALL folders
-            **/*.sha256
+            build/deploy.iso
+            build/deploy.iso-CHECKSUM
           if-no-files-found: warn
           compression-level: 0
