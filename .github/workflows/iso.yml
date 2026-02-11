@@ -27,7 +27,7 @@ jobs:
           image_repo: ghcr.io/slate-os
           image_tag: latest
           variant: silverblue
-          version: 43
+          version: rawhide
           iso_name: slateos-latest.iso
 
       - name: Upload ISO
