@@ -12,30 +12,22 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
-
-      # --- NEW STEP STARTS HERE ---
       - name: Login to Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      # --- NEW STEP ENDS HERE ---
-
-      - name: Build ISOs
-        uses: jasonn3/build-container-installer@v1.2.4
-        with:
-          image_name: slateos
-          image_repo: ghcr.io/slate-os
-          image_tag: latest
-          variant: silverblue
-          version: 41
+      - name: List files (Debug)
+        run: |
+          echo "Listing all files in workspace:"
+          find . -maxdepth 3 -not -path '*/.*'
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
           name: slateos-latest-iso
           path: |
-            *.iso
-            *.sha256
+            **/*.iso              # <--- THE FIX: This searches ALL folders
+            **/*.sha256
           if-no-files-found: warn
           compression-level: 0
