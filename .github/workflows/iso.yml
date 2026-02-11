@@ -30,3 +30,12 @@ jobs:
           image_tag: latest
           variant: silverblue
           version: 41
+      - name: Upload ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: slateos-latest-iso
+          path: |
+            *.iso
+            *.sha256
+          if-no-files-found: warn
+          compression-level: 0
