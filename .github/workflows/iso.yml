@@ -2,6 +2,7 @@ name: Build ISO
 
 on:
   workflow_dispatch:
+
 jobs:
   build-iso:
     runs-on: ubuntu-latest
@@ -11,12 +12,14 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+
       - name: Login to Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build ISOs
         uses: jasonn3/build-container-installer@v1.2.4
         with:
@@ -26,16 +29,13 @@ jobs:
           variant: silverblue
           version: 43
           iso_name: slateos-latest.iso
-      - name: Debug - List All Files
-        run: |
-          echo "Listing all files in workspace:"
-          find . -maxdepth 4 -not -path '*/.*'
+
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
           name: slateos-latest-iso
           path: |
-            **/*.iso        # <--- UPDATED: Searches EVERY folder
-            **/*.sha256
+            *.iso
+            *.sha256
           if-no-files-found: warn
           compression-level: 0
